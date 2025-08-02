@@ -14,7 +14,7 @@ const ContractList: React.FC = () => {
 
   useEffect(() => {
     // APIから契約一覧を取得
-    fetch("/api/contracts/")
+    fetch("http://localhost:8000/api/contracts/")
       .then((res) => {
         if (!res.ok) throw new Error("データ取得失敗");
         return res.json();
