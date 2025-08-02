@@ -18,5 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('http://localhost:8000/api/contracts/', include('contracts.urls')),
+    path('admin/', admin.site.urls),
+    path('api/contracts/', include('contracts.urls')),
 ]
