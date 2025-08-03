@@ -38,24 +38,28 @@
 ```
 contract-management/
 ├── frontend/                 # React アプリケーション
+|   ├── node_modules
 │   ├── public/
 │   ├── src/
-│   │   ├── components/       # 再利用可能コンポーネント
-│   │   ├── pages/           # ページコンポーネント
-│   │   ├── hooks/           # カスタムフック
-│   │   ├── services/        # API通信
-│   │   ├── types/           # TypeScript型定義
-│   │   └── utils/           # ユーティリティ関数
+│   │   ├── App.css/      
+│   │   ├── App.js/           
+│   │   ├── App.test.js/           
+│   │   ├── index.css/       
+│   │   ├── index.js/
+|   |   ├── logo.svg/
+|   |   ├── reportWebVitals.js
+|   |   └── setupTests.js 
+|   ├── package-lock.json      
 │   ├── package.json
-│   └── tailwind.config.js
+│   └── README.md
 ├── backend/                  # Django アプリケーション
-│   ├── config/              # Django設定
+│   ├── backend/              # Django設定
 │   ├── apps/
 │   │   ├── contracts/       # 契約管理アプリ
 │   │   ├── billing/         # 請求管理アプリ
 │   │   ├── matching/        # 突合機能アプリ
 │   │   └── authentication/ # 認証アプリ
-│   ├── requirements.txt
+│   ├── db.sqlite3
 │   └── manage.py
 ├── infrastructure/           # インフラ設定
 │   ├── docker/
