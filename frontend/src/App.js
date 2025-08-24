@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-// import logo from './logo.svg'; // 初期ロゴが必要なければ削除可 → この行を削除
 import './App.css'; // 必要なければ削除可
 
 function App() {
   const [contracts, setContracts] = useState([]); // 契約データを保持するステート
   const [loading, setLoading] = useState(true);   // ローディング状態
-  const [error, setError] = useState(null);       // エラー状態
+  const [error, setError] = useState(null);      // エラー状態
 
   useEffect(() => {
+    // APIから契約一覧を取得
+    // ここでDjangoバックエンドのAPIを呼び出します
     fetch("http://localhost:8000/api/contracts/")
       .then((res) => {
         if (!res.ok) {
+          // HTTPステータスが200番台以外の場合
           throw new Error(`HTTP error! status: ${res.status}`);
         }
         return res.json();
@@ -20,11 +22,12 @@ function App() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Fetch error:", err);
+        // ネットワークエラーなど、fetch自体が失敗した場合
+        console.error("Fetch error:", err); // デバッグ用にコンソールに出力
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, []); // 依存配列が空なので、コンポーネントがマウントされた時に一度だけ実行
 
   if (loading) {
     return <div className="App"><p>Loading contracts...</p></div>;
@@ -37,7 +40,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> → この行を削除 */}
         <h1>契約一覧</h1>
         {contracts.length > 0 ? (
           <ul>
